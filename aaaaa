@@ -1,0 +1,60 @@
+import simplegui
+import math
+w = 400
+x = 400
+y = 325
+z = 5
+def draw_handler(canvas):
+    global w
+    global x
+    global y
+    global z
+#sun
+    if x > 0:
+        x = x-1
+
+    canvas.draw_circle((200, x), 35,1,"black", "yellow")
+
+#tree_1 & and tree_2
+    if y > 250:
+        y=y-.1
+    canvas.draw_polygon([(125, 350), (125,y), (150, y), (150, 350)], 1, "black", "brown")
+    canvas.draw_polygon([(275, 350), (275,y), (300, y), (300, 350)], 1, "black", "brown")
+
+#leaves
+    if y < 250:
+        if z < 15:
+            z = z+.1
+            #leaves_1
+        canvas.draw_circle((125,245),z,1,"black", "green")
+        canvas.draw_circle((150,245),z,1,"black", "green")
+        canvas.draw_circle((137.5,225),z,1,"black", "green")
+        canvas.draw_circle((110,225),z,1,"black", "green")
+        canvas.draw_circle((160,225),z,1,"black", "green")
+        canvas.draw_circle((125,205),z,1,"black", "green")
+        canvas.draw_circle((150,205),z,1,"black", "green")
+            #leaves_2
+        canvas.draw_circle((275,245),z,1,"black", "green")
+        canvas.draw_circle((300,245),z,1,"black", "green")
+        canvas.draw_circle((287.5,225),z,1,"black", "green")
+        canvas.draw_circle((260,225),z,1,"black", "green")
+        canvas.draw_circle((310,225),z,1,"black", "green")
+        canvas.draw_circle((275,205),z,1,"black", "green")
+        canvas.draw_circle((300,205),z,1,"black", "green")
+#clouds
+    if w > 0:
+        w = w-.7
+        canvas.draw_circle((w,50),15,1,"#DFF2FA","#DFF2FA")
+        canvas.draw_circle((w/3, 150),35,2,"#DFF2FA", "#DFF2FA")
+        canvas.draw_circle((w/3+40, 169), 30,2,"#DFF2FA", "#DFF2FA")
+        canvas.draw_circle((w/3-40, 169),22,2, "#DFF2FA", "#DFF2FA")
+
+
+#land
+    canvas.draw_circle((200,600),300,1, "green", "green")
+
+
+frame = simplegui.create_frame('Testing', 400, 400)
+frame.set_canvas_background("lightblue")
+frame.set_draw_handler(draw_handler)
+frame.start()
